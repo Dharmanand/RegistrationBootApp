@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>List Of Users</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container text-center">
+		<div>
+			<form th:action="@{/logout}" method="post">
+				<div>
+					<p>Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b></p>
+					<input type="submit" value="Sign Out"/>
+				</div>
+				<
+			</form>
+		</div>
+		<div>
+			<h2>List of users !</h2>
+		</div>
+		<div>
+			<table class="table table-striped table-bordered">
+				<thead class="table-dark">
+					<tr>
+						<th>User Id</th>
+						<th>Email</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user:${listUsers}">
+						<td th:text="${user.id}">User Id</td>
+						<td th:text="${user.email}">Email</td>
+						<td th:text="${user.firstName}">First Name</td>
+						<td th:text="${user.lastName}">Last Name</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
